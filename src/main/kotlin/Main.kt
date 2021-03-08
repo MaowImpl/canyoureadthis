@@ -8,11 +8,14 @@ fun main(args: Array<String>) {
     if (args.size == 1) {
         val builder = StringBuilder()
         args[0].split(' ').forEach {
-            val word = Word(it)
-            val string: String =
-                if (it.length > 3)
-                    word.start + word.middle.shuffle() + word.end
-                else it
+            var string = it
+            if (it.length > 1) {
+                val word = Word(it)
+                string =
+                    if (it.length > 3)
+                        word.start + word.middle.shuffle() + word.end
+                    else it
+            }
             builder
                 .append(string)
                 .append(' ')
